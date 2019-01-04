@@ -23,6 +23,27 @@
         "tooltip": "Set the permission level for the command",
         "group": "General"
     },
+    "serveraddress": {
+        "type": "textbox",
+        "value": "127.0.0.1",
+        "label": "Telnet Address",
+        "tooltip": "Ip address of 7d2d server",
+        "group": "Connection"
+    },
+    "serverport": {
+        "type": "textbox",
+        "value": "8080",
+        "label": "Telnet Port",
+        "tooltip": "Telnet port of 7d2d server",
+        "group": "Connection"
+    },
+    "serverpass": {
+        "type": "textbox",
+        "value": "",
+        "label": "Telnet Address",
+        "tooltip": "Telnet password of 7d2d server",
+        "group": "Connection"
+    },
     "useCustomCosts": {
         "type": "checkbox",
         "value": true,

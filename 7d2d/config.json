@@ -11,5 +11,8 @@
   "userCooldown": 120,
   "onUserCooldown": "$user, $command is still on user cooldown for $cd minutes!",
   "responseNotEnoughPoints": "$user you have only $points $currency and need $cost $currency.",
-  "responseLost": "$user spawned a horde! Cost: $cost $currency"
+  "responseLost": "$user spawned a horde! Cost: $cost $currency",
+  "serveraddress": "127.0.0.1",
+  "serverport": "8080",
+  "serverpass": ""
 }

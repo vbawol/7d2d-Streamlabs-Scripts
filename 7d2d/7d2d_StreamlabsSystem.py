@@ -22,21 +22,6 @@ def Init():
 	global settings
 	global tn
 
-	# toto add setttings
-	host = '127.0.0.1'
-	port = 8080
-	password = 'changeMe'
-	# connect to remote host
-	try:
-		tn = telnetlib.Telnet(host, port)
-	except:
-		print('Unable to connect')
-		sys.exit()
-
-	# Send Password
-	tn.read_until(b"Please enter password: ", 4)
-	tn.write(password.encode('ascii') + b"\n")
-
 	path = os.path.dirname(__file__)
 	try:
 		with codecs.open(os.path.join(path, configFile), encoding='utf-8-sig', mode='r') as file:
@@ -55,8 +40,22 @@ def Init():
 			"userCooldown": 300,
 			"onUserCooldown": "$user $command is still on user cooldown for $cd minutes!",
 			"responseNotEnoughPoints": "$user you have only $points $currency and need $cost $currency.",
-			"responseLost": "$user spawned a horde! Cost: $cost $currency."
+			"responseLost": "$user spawned a horde! Cost: $cost $currency.",
+			"serveraddress": "127.0.0.1",
+			"serverport": "8080",
+			"serverpass": ""
 		}
+
+	# connect to remote host
+	try:
+		tn = telnetlib.Telnet(settings["serveraddress"], settings["serverport"])
+	except:
+		print('Unable to connect')
+		sys.exit()
+
+	# Send Password
+	tn.read_until(b"Please enter password: ", 4)
+	tn.write(settings["serverpass"].encode('ascii') + b"\n")
 
 def Execute(data):
 	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
